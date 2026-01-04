@@ -1,4 +1,4 @@
-from utils import normalize_name, is_valid_email, is_valid_age 
+
 
 class User:
     def __init__(self, user_id, name, email):
@@ -17,10 +17,6 @@ class Student:
         self.major = major
         
     def  display(self):
-        
-        if not is_valid_email(self.email):
-            print("Invalid email")
-            return 
-        self.name = normalize_name(self.name)  
+         
         print(f"Student ID: {self.student_id}, \n Name: {self.name}, \n Email: {self.email}, \n Major: {self.major  }")
         
