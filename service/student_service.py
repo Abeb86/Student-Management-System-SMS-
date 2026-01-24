@@ -1,6 +1,11 @@
 from models import Student
 from utils import is_valid_email, is_valid_age, normalize_name  
-from storage.student_repo import to_json 
+from storage.student_repo import to_json, to_dict
+from storage.student_repo import file_path  
+import json, pprint 
+
+
+
 def create_students():
     student_1 = Student()
     student_1.student_id = input("Enter your student id: ")
@@ -21,3 +26,25 @@ def create_students():
     to_json(student_1)
     student_1.display() 
      #return the student object to the main function 
+
+def getStudent(student_id:int):
+
+        data = to_dict()
+        if data is None:
+            print("No data is found")
+            return None
+        
+        if not isinstance(data, list):
+            raise ValueError("student.json must be a JSON array")
+        
+        for student in data:
+            if not isinstance(student, dict):
+                raise ValueError(f"Invalid record, got {type(student):{student}}")
+
+            if int(student.get("student_id"))==int(student_id):
+                pprint.pprint(student)
+                return student 
+        
+
+       
+

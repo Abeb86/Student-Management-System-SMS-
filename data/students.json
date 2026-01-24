@@ -4,5 +4,17 @@
     "student_id": "12",
     "major": "cs",
     "email": "cs@a."
+  },
+  {
+    "name": "23",
+    "student_id": "12",
+    "major": "adf",
+    "email": "sadf@."
+  },
+  {
+    "name": "Abebayehu",
+    "student_id": "1",
+    "major": "cs",
+    "email": "abs@."
   }
 ]

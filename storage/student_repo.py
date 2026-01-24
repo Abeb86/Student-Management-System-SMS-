@@ -1,6 +1,8 @@
 import json
 import os
-from models import Student
+from models import Student 
+file_path = "data/students.json"
+import pprint 
 
 def to_json(student: Student):
     student_dict = {
@@ -10,7 +12,6 @@ def to_json(student: Student):
         "email": student.email
     }
 
-    file_path = "data/students.json"
 
     # 1) Read existing data (or initialize)
     if (not os.path.exists(file_path)) or os.stat(file_path).st_size == 0:
@@ -27,3 +28,12 @@ def to_json(student: Student):
     # 3) Write back (overwrite file)
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+
+def to_dict():
+    if not os.path.exists(file_path):
+        print("The file does not exist")
+        return None 
+
+    with open (file_path, "r", encoding ="utf-8") as file_dict:
+            data = json.load(file_dict)
+    return data 
