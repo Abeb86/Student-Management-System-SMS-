@@ -10,5 +10,17 @@
     "student_id": "2",
     "major": "elec",
     "email": "aby@gmail.com"
+  },
+  {
+    "student_id": "3",
+    "email": "aye@,.",
+    "major": "cs",
+    "name": "Aye"
+  },
+  {
+    "student_id": "4",
+    "email": "heni@gma.o",
+    "major": "law",
+    "name": "Heni"
   }
 ]

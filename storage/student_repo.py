@@ -48,18 +48,7 @@ def save_data(data: List[Dict[str, Any]]) -> None:
         json.dump(data, f, indent=2)
 
 
-def to_json(student: Student) -> None:
-    """
-    Append one student to the JSON file.
-    """
-    students = to_dict()
-
-    student_dict = {
-        "name": student.name,
-        "student_id": student.student_id,
-        "major": student.major,
-        "email": student.email,
-    }
-
-    students.append(student_dict)
+def add_student(student: Student) -> None:
+    students =  to_dict()         #to read the previous data
+    students.append(student.to_dict())
     save_data(students)

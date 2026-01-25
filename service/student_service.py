@@ -1,37 +1,31 @@
-from models import Student
-from utils import is_valid_email, is_valid_age, normalize_name
-from storage.student_repo import to_json, to_dict, save_data
 import pprint
+from models import Student
+from utils import normalize_name, is_valid_email, is_valid_age
+from storage.student_repo import to_dict, save_data
 
 def create_students():
-    student_1 = Student()
-    student_1.student_id = input("Enter your student id: ").strip()
-    student_1.name = input("Enter your name: ").strip()
-    student_1.age = input("Enter your age: ").strip()
-    student_1.major = input("Enter your major: ").strip()
-    student_1.email = input("Enter your email: ").strip()
+    student_id = input("Enter your student id: ").strip()
+    name = input("Enter your name: ").strip()
+    major = input("Enter your major: ").strip()
+    email = input("Enter your email: ").strip()
 
-    # validate
-    if not is_valid_email(student_1.email):
+    if not is_valid_email(email):
         print("Invalid email")
         return False
 
-    if not is_valid_age(student_1.age):
-        print("Invalid age")
-        return False
+    name = normalize_name(name)
 
-    student_1.name = normalize_name(student_1.name)
+    students = to_dict()
 
-    # OPTIONAL Phase 2: prevent duplicate ID
-    data = to_dict() or []
-    for s in data:
-        if str(s.get("student_id")) == str(student_1.student_id):
-            print(f"Student ID {student_1.student_id} already exists.")
+    # Duplicate ID check
+    for s in students:
+        if str(s.get("student_id")) == str(student_id):
+            print(f"Student ID {student_id} already exists.")
             return False
 
-    # save (choose ONE approach)
-    # If to_json already appends+persists, keep it:
-    to_json(student_1)
+    new_student = Student(student_id=student_id, name=name,  major=major, email=email)
+    students.append(new_student.new_dict())
+    save_data(students)
 
     print("Student created successfully.")
     return True
@@ -67,7 +61,6 @@ def getStudent(student_id: int):
     # only after loop
     print(f"The student with id {student_id} doesn't exist")
     return None
-
 
 def updateStudent(student_id: int):
     data = to_dict()

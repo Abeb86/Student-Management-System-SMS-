@@ -50,7 +50,7 @@ def main():
                 print("Invalid ID.")
 
         elif value == 6:
-            print("Exiting system. Goodbye 👋")
+            print("Exiting system. Goodbye")
             break
 
         else:
