@@ -1,6 +1,6 @@
 import pprint
 from models import Student
-from utils import normalize_name, is_valid_email, is_valid_age
+from utils import normalize_name, is_valid_email
 from storage.student_repo import to_dict, save_data
 
 def create_students():
@@ -30,7 +30,7 @@ def create_students():
     print("Student created successfully.")
     return True
 
-
+#displaying all the students 
 def displayAll():
     data = to_dict()
     if not data:
@@ -40,7 +40,7 @@ def displayAll():
     for student in data:
         pprint.pprint(student)
 
-
+#getting a student by id 
 def getStudent(student_id: int):
     data = to_dict()
     if not data:
@@ -62,6 +62,7 @@ def getStudent(student_id: int):
     print(f"The student with id {student_id} doesn't exist")
     return None
 
+#updating a student by id  
 def updateStudent(student_id: int):
     data = to_dict()
     if not data:
@@ -88,8 +89,9 @@ def updateStudent(student_id: int):
 
     print(f"Student with id {student_id} not found.")
     return False
-from storage.student_repo import to_dict, save_data
 
+
+# deleting a student by id  
 def deleteStudent(student_id: int) -> bool:
     students = to_dict()
 
@@ -102,9 +104,7 @@ def deleteStudent(student_id: int) -> bool:
         if int(student.get("student_id")) == int(student_id):
             removed = students.pop(index)   # remove from list
             save_data(students)              # persist change
-
             print(f"Student with id {removed['student_id']} has been deleted.")
             return True
-
     print(f"Student with id {student_id} not found.")
     return False

@@ -22,5 +22,17 @@
     "email": "heni@gma.o",
     "major": "law",
     "name": "Heni"
+  },
+  {
+    "name": "Moges",
+    "student_id": "5",
+    "email": "moges@gmail.com",
+    "major": "elec"
+  },
+  {
+    "student_id": 6,
+    "name": "string",
+    "major": "string",
+    "email": "user@example.com"
   }
 ]

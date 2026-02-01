@@ -1,4 +1,4 @@
 {
     "livePreview.defaultPreviewPath": "/index.html",
-    "python.languageServer": "Pylance"
+    "python.languageServer": "None"
 }
